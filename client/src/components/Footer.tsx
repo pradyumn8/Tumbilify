@@ -13,9 +13,9 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 280, damping: 70, mass: 1 }}
             >
-                <a href="https://prebuiltui.com?utm_source=pixels">
-                    <img className="size-8 aspect-square" src="/assets/footer-logo.svg" alt="footer logo" width={32} height={32} />
-                </a>
+               <Link to="/">
+               <img className="size-8 aspect-square" src="/favicon.svg" alt="footer logo" width={32} height={32} />
+               </Link>
                 {footerData.map((section, index) => (
                     <div key={index}>
                         <p className="text-slate-100 font-semibold">{section.title}</p>
