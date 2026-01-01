@@ -1,0 +1,33 @@
+import { RectangleHorizontal } from 'lucide-react'
+import {aspectRatios,type AspectRatio} from '../../assets/assets'
+
+const AspectRatioSelector = ({value, onChange} : {value: AspectRatio, onChange: (ratio: AspectRatio) => void}) => {
+
+    const iconMap = {
+        '16:9': <RectangleHorizontal className='size-6'/>,
+        '4:3': <RectangleHorizontal className='size-6'/>,
+        '1:1': <RectangleHorizontal className='size-6'/>,
+        '9:16': <RectangleHorizontal className='size-6'/>,
+    } as Record<string, React.ReactNode>
+
+  return (
+    <div className='space-y-3 dark'>
+        <label className='block text-sm font-medium text-zinc-200'>Aspect Ratio</label>
+
+        <div className='flex flex-wrap gap-2'>
+            {aspectRatios.map((ratio) => {
+                const selected = value === ratio;
+
+                return (
+                    <button key={ratio} onClick={() => onChange(ratio)} type='button' className={`flex items-center gap-2 px-5 py-2.5 text-sm border border-white/10 rounded-lg hover:border-pink-500 transition ${selected ? 'border-pink-500 border-white/12 bg-pink-950' : 'hover:bg-white/6 hover:border-white/12'}`}>
+                        {iconMap[ratio]}
+                        <span className='tracking-widest'>{ratio}</span>
+                    </button>
+                )
+            })}
+        </div>
+    </div>
+  )
+}
+
+export default AspectRatioSelector
