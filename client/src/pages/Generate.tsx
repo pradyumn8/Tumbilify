@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { colorSchemes, type AspectRatio, type IThumbnail, type ThumbnailStyle } from '../../assets/assets';
+import { colorSchemes, dummyThumbnails, thumbnailStyles, type AspectRatio, type IThumbnail, type ThumbnailStyle } from '../../assets/assets';
 import SoftBackdrop from './SoftBackdrop';
 import AspectRatioSelector from '../components/AspectRatioSelector';
 import StyleSelector from '../components/StyleSelector';
 import ColorSchemeSelector from '../components/ColorSchemeSelector';
+import PreviewPanel from '../components/PreviewPanel';
 
 const Generate = () => {
 
     const { id } = useParams();
     const [title, setTitle] = useState('');
     const [addtionalDetails, setAddtionalDetails] = useState('');
-    const [Thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
+    const [thumbnail, setThumbnail] = useState<IThumbnail | null>(null);
     const [loading, setLoading] = useState(false);
 
     const [aspectRatio, setAspectRatio] = useState<AspectRatio>('16:9');
@@ -20,6 +21,25 @@ const Generate = () => {
 
     const [styleDropdownOpen, setStyleDropdownOpen] = useState(false);
 
+    const handleGenerate = async () => {
+
+    }
+    const fetchThumbnail = async () => {
+        if(id){
+            const thumbnail : any = dummyThumbnails.find(t => t._id === id);
+            setThumbnail(thumbnail)
+            setAddtionalDetails(thumbnail.user_prompt || '');
+            setTitle(thumbnail.title || '');
+            setAspectRatio(thumbnail.aspect_ratio as AspectRatio);
+            setColorSchemeId(thumbnail.color_scheme_id || colorSchemes[0].id);
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        if (id) {
+            fetchThumbnail();
+        }
+    }, [id]);
     return (
         <>
             <SoftBackdrop />
@@ -56,14 +76,19 @@ const Generate = () => {
                                 </div>
                                 {/* Button */}
                                 {!id && (
-                                    <button className='text-[15px] w-full py-3.5 rounded-xl font-medium bg-linear-to-b from-pink-500 to-pink-600 hover:from-pink-700 disabled:cursor-not-allowed transition-colors'>
+                                    <button onClick={handleGenerate} className='text-[15px] w-full py-3.5 rounded-xl font-medium bg-linear-to-b from-pink-500 to-pink-600 hover:from-pink-700 disabled:cursor-not-allowed transition-colors'>
                                         {loading ? 'Generating...' : 'Generate Thumbnail'}
                                     </button>
                                 )}
                             </div>
                         </div>
                         {/* Right PANEL */}
-                        <div></div>
+                        <div>
+                        <div className='p-6 rounded-2xl bg-white/8 border border-white/10 shadow-xl'>
+                            <h2 className='text-lg font-semibold text-zinc-100'>Preview</h2>
+                            <PreviewPanel thumbnail={thumbnail} isLoading={loading} aspectRatio={aspectRatio}/>
+                        </div>
+                        </div>
                     </div>
                 </main>
             </div>
