@@ -44,7 +44,7 @@ const Generate = () => {
                                     {/* AspectRatioSelector */}
                                     <AspectRatioSelector value={aspectRatio} onChange={setAspectRatio} />
                                     {/* StyleSelector */}
-                                    <StyleSelector value={style} onChange={setStyle}/>
+                                    <StyleSelector value={style} onChange={setStyle} isOpen={styleDropdownOpen} setIsOpen={setStyleDropdownOpen}/>
                                     {/* ColorSchemeSelector */}
                                     {/* Details */}
                                     <div className='space-y-2'>
