@@ -4,6 +4,7 @@ import { colorSchemes, type AspectRatio, type IThumbnail, type ThumbnailStyle } 
 import SoftBackdrop from './SoftBackdrop';
 import AspectRatioSelector from '../components/AspectRatioSelector';
 import StyleSelector from '../components/StyleSelector';
+import ColorSchemeSelector from '../components/ColorSchemeSelector';
 
 const Generate = () => {
 
@@ -46,6 +47,7 @@ const Generate = () => {
                                     {/* StyleSelector */}
                                     <StyleSelector value={style} onChange={setStyle} isOpen={styleDropdownOpen} setIsOpen={setStyleDropdownOpen}/>
                                     {/* ColorSchemeSelector */}
+                                    <ColorSchemeSelector value={colorSchemeId} onChange={setColorSchemeId} />
                                     {/* Details */}
                                     <div className='space-y-2'>
                                         <label className='block text-sm font-medium text-zinc-300'>Additional Details<span className='text-zinc-400 text-xs'> (optional)</span></label>
