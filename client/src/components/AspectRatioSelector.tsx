@@ -1,5 +1,5 @@
 import { RectangleHorizontal } from 'lucide-react'
-import {aspectRatios,type AspectRatio} from '../../assets/assets'
+import {aspectRatios,type AspectRatio} from '../assets/assets'
 
 const AspectRatioSelector = ({value, onChange} : {value: AspectRatio, onChange: (ratio: AspectRatio) => void}) => {
 

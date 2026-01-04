@@ -1,5 +1,5 @@
 import React from 'react'
-import type { AspectRatio, IThumbnail } from '../../assets/assets'
+import type { AspectRatio, IThumbnail } from '../assets/assets'
 import { div } from 'motion/react-client'
 import { DownloadIcon, ImageIcon, Loader2Icon } from 'lucide-react'
 

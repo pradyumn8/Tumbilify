@@ -1,4 +1,4 @@
-import { colorSchemes } from "../../assets/assets"
+import { colorSchemes } from "../assets/assets"
 
 const ColorSchemeSelector = ({ value, onChange }: { value: string; onChange: (color: string) => void }) => {
     return (

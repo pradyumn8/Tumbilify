@@ -1,5 +1,5 @@
 import React from 'react'
-import { thumbnailStyles, type ThumbnailStyle } from "../../assets/assets.ts"
+import { thumbnailStyles, type ThumbnailStyle } from "../assets/assets.ts"
 import { ChevronDown, CpuIcon, ImageIcon, PenToolIcon, SparkleIcon } from 'lucide-react'
 
 const StyleSelector = ({ value, onChange, isOpen, setIsOpen }: { value: ThumbnailStyle; onChange: (style: ThumbnailStyle) => void; isOpen: boolean; setIsOpen: (open: boolean) => void }) => {
