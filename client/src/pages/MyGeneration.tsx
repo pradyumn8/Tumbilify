@@ -33,6 +33,7 @@ const MyGeneration = () => {
     console.log(id);
   };
 
+
   useEffect(() => {
     fetchThumbnails();
   }, []);
@@ -85,6 +86,7 @@ const MyGeneration = () => {
               const previewUrl = `/preview?thumbnail_url=${encodeURIComponent(
                 thumb.image_url || ''
               )}&title=${encodeURIComponent(thumb.title || '')}`;
+
 
               const createdText = thumb.createdAt
                 ? new Date(thumb.createdAt).toDateString()
@@ -155,10 +157,13 @@ const MyGeneration = () => {
                       onClick={() => handleDownload(thumb.image_url!)}
                       className="size-6 bg-black/50 p-1 rounded hover:bg-pink-600 transition-all"
                     />
-
-                    <Link target="_blank" to={`/preview?thumbnail_url=$(thumb.image_url}&title=$(thumb.title)`}>
+                    <Link
+                      target="_blank"
+                      to={previewUrl}
+                    >
                       <ArrowRightIcon className="size-6 bg-black/50 p-1 rounded hover:bg-pink-600 transition-all" />
                     </Link>
+
                   </div>
                 </div>
               );
