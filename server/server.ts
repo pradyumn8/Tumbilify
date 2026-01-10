@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
-import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './configs/db.js';
 import session from 'express-session';
+import cors from 'cors';
+import AuthRouter from './routes/AuthRoutes.js';
 
 
 declare module 'express-session' {
@@ -14,6 +15,7 @@ declare module 'express-session' {
 await connectDB();
 
 const app = express();
+
 
 app.use(cors({
     origin: ['http://localhost:5173', 'http://localhost:3000'],
@@ -33,6 +35,8 @@ app.use(express.json());
 app.get('/', (req: Request, res: Response) => {
     res.send('Server is Live!');
 });
+
+app.use('/api/auth', AuthRouter)
 
 const port = process.env.PORT || 3000;
 
