@@ -4,6 +4,8 @@ import connectDB from './configs/db.js';
 import session from 'express-session';
 import cors from 'cors';
 import AuthRouter from './routes/AuthRoutes.js';
+import ThumbnailRouter from './routes/ThumbnailRoute.js';
+import UserRouter from './routes/UserRoutes.js';
 
 
 declare module 'express-session' {
@@ -37,6 +39,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/api/auth', AuthRouter)
+app.use('/api/thumbnail', ThumbnailRouter)
+app.use('/api/user',UserRouter)
 
 const port = process.env.PORT || 3000;
 
